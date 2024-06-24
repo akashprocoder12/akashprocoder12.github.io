@@ -3,16 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>game trial 2 snake game</title>
+    <title>Beautiful Chess Board</title>
     <style>
-        body{
-            background-color: rgb(16, 16, 226);
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
         }
-    
-        </style>
+        .chess-board {
+            display: grid;
+            grid-template-columns: repeat(8, 60px);
+            grid-template-rows: repeat(8, 60px);
+            border: 2px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .chess-board div {
+            width: 60px;
+            height: 60px;
+        }
+        .black {
+            background-color: #769656;
+        }
+        .white {
+            background-color:#eeeed2;
+        }
+        .piece {
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .piece.black {
+            color: #000;
+        }
+        .piece.white {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <canvas></canvas>
-    <script src="game23.js"></script>
+    <div class="chess-board">
+        <!-- Rows 8 to 1 -->
+        <!-- Black Pieces -->
+        <div class="black piece black">♜</div>
+        <div class="white piece black">♞</div>
+        <div class="black piece black">♝</div>
+        <div class="white piece black">♛</div>
+        <div class="black piece black">♚</div>
+        <div class="white piece black">♝</div>
+        <div class="black piece black">♞</div>
+        <div class="white piece black">♜</div>
+        
+        <!-- Black Pawns -->
+        <div class="white piece black">♟</div>
+        <div class="black piece black">♟</div>
+        <div class="white piece black">♟</div>
+        <div class="black piece black">♟</div>
+        <div class="white piece black">♟</div>
+        <div class="black piece black">♟</div>
+        <div class="white piece black">♟</div>
+        <div class="black piece black">♟</div>
+
+        <!-- Empty squares -->
+        <!-- Row 6 -->
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+
+        <!-- Row 5 -->
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+
+        <!-- Row 4 -->
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+
+        <!-- Row 3 -->
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+
+        <!-- White Pawns -->
+        <div class="black piece white">♙</div>
+        <div class="white piece white">♙</div>
+        <div class="black piece white">♙</div>
+        <div class="white piece white">♙</div>
+        <div class="black piece white">♙</div>
+        <div class="white piece white">♙</div>
+        <div class="black piece white">♙</div>
+        <div class="white piece white">♙</div>
+
+        <!-- White Pieces -->
+        <div class="white piece white">♖</div>
+        <div class="black piece white">♘</div>
+        <div class="white piece white">♗</div>
+        <div class="black piece white">♕</div>
+        <div class="white piece white">♔</div>
+        <div class="black piece white">♗</div>
+        <div class="white piece white">♘</div>
+        <div class="black piece white">♖</div>
+    </div>
 </body>
 </html>
+
