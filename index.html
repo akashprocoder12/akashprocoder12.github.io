@@ -3,130 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Chess Board</title>
+    <title>Document</title>
     <style>
+        /* Resetting default margin */
         body {
+            margin: 0;
+            font-family: Arial, sans-serif; /* Optional: Set a default font */
+            background-color: #f0f0f0; /* Optional: Set a background color */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
         }
-        .chess-board {
-            display: grid;
-            grid-template-columns: repeat(8, 60px);
-            grid-template-rows: repeat(8, 60px);
+
+        /* Styling for the canvas */
+        canvas {
             border: 2px solid #333;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background-color: #fff;
+            /* Optional: Adjust canvas size */
+            
         }
-        .chess-board div {
-            width: 60px;
-            height: 60px;
+
+        /* Styling for the game over message */
+        h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 20px;
         }
-        .black {
-            background-color: #769656;
+
+        /* Styling for the restart button */
+        p {
+            text-align: center;
         }
-        .white {
-            background-color:#eeeed2;
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
-        .piece {
-            font-size: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .piece.black {
-            color: #000;
-        }
-        .piece.white {
-            color: #fff;
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="chess-board">
-        <!-- Rows 8 to 1 -->
-        <!-- Black Pieces -->
-        <div class="black piece black">♜</div>
-        <div class="white piece black">♞</div>
-        <div class="black piece black">♝</div>
-        <div class="white piece black">♛</div>
-        <div class="black piece black">♚</div>
-        <div class="white piece black">♝</div>
-        <div class="black piece black">♞</div>
-        <div class="white piece black">♜</div>
-        
-        <!-- Black Pawns -->
-        <div class="white piece black">♟</div>
-        <div class="black piece black">♟</div>
-        <div class="white piece black">♟</div>
-        <div class="black piece black">♟</div>
-        <div class="white piece black">♟</div>
-        <div class="black piece black">♟</div>
-        <div class="white piece black">♟</div>
-        <div class="black piece black">♟</div>
-
-        <!-- Empty squares -->
-        <!-- Row 6 -->
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-
-        <!-- Row 5 -->
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-
-        <!-- Row 4 -->
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-
-        <!-- Row 3 -->
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-
-        <!-- White Pawns -->
-        <div class="black piece white">♙</div>
-        <div class="white piece white">♙</div>
-        <div class="black piece white">♙</div>
-        <div class="white piece white">♙</div>
-        <div class="black piece white">♙</div>
-        <div class="white piece white">♙</div>
-        <div class="black piece white">♙</div>
-        <div class="white piece white">♙</div>
-
-        <!-- White Pieces -->
-        <div class="white piece white">♖</div>
-        <div class="black piece white">♘</div>
-        <div class="white piece white">♗</div>
-        <div class="black piece white">♕</div>
-        <div class="white piece white">♔</div>
-        <div class="black piece white">♗</div>
-        <div class="white piece white">♘</div>
-        <div class="black piece white">♖</div>
-    </div>
+    <canvas id="myElement"></canvas>
+    <h1>Game Over</h1>
+    <p>Touch here to restart the game <button onclick="showElement()">Start Game Again</button></p>
+    <script src="game1.js"></script>
+    <script>
+        function showElement() {
+            // Get a reference to the element
+            let element = document.getElementById('myElement');
+            
+            // Reset the display property to restore default behavior
+            element.style.display = '';
+        }
+    </script>
 </body>
 </html>
-
