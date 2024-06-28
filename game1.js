@@ -5,9 +5,12 @@ canvas.style.background = "pink";
 
 console.log(canvas);
 
+
+
 const ctx = canvas.getContext('2d');
 
 let score = 0;
+let gameover = false;
 class Player {
     constructor(x, y, radius, color) {
         this.x = x;
@@ -22,7 +25,7 @@ class Player {
         ctx.fill()
         ctx.fillStyle = "black"
         ctx.font = "30px Arial"
-        ctx.fillText("Score is "+score , 20,40)
+        ctx.fillText("Score is "+score , 40,40)
 
         
 
@@ -78,7 +81,7 @@ class Enemy {
         ctx.fill()
         ctx.fillStyle = 'black'
         ctx.font = "10px Arial"
-        ctx.fillText("enemy", this.x, this.y );
+        ctx.fillText("enemy", this.x, this.y);
         
         
     }
@@ -105,8 +108,9 @@ class Enemy {
         }
         if (collisionDetection(player, this)){
             canvas.style.display = "None";
-            enemies=[];
+            enemies.length = 0;
             score = 0;
+            gameover = true;
         }
 
 
@@ -198,5 +202,19 @@ function animate() {
 
 
 }
-spawnENEMIES();
+
+function showElement() {
+    // Get a reference to the element
+    let element = document.getElementById('myElement');
+    
+    // Reset the display property to restore default behavior
+    element.style.display = '';
+    gameover = false;
+    enemies.length = 0;
+}
+
+if (!gameover){
+    spawnENEMIES();
+}
+
 animate();
