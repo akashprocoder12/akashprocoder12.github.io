@@ -78,7 +78,7 @@ class Enemy {
         ctx.fill()
         ctx.fillStyle = 'black'
         ctx.font = "10px Arial"
-        ctx.fillText("enemy", this.x- 10, this.y - 20);
+        ctx.fillText("enemy", this.x, this.y );
         
         
     }
