@@ -2,8 +2,8 @@ const canvas = document.querySelector('canvas');
 canvas.width = innerWidth
 canvas.height = innerHeight
 canvas.style.background = "pink";
-const container = document.querySelector(".container");
-container.style.display = "None";
+const container = document.querySelector('.container');
+container.style.display = 'None'
 console.log(canvas);
 
 
@@ -112,7 +112,7 @@ class Enemy {
             enemies.length = 0;
             score = 0;
             gameover = true;
-            container.style.display = "";
+            container.style.display = ''
         }
 
 
@@ -212,7 +212,7 @@ function showElement() {
     let element = document.getElementById('myElement');
     
     // Reset the display property to restore default behavior
-    if (gameover){
+    if (gameover==true){
         element.style.display = '';
     gameover = false;
     enemies.length = 0;
@@ -223,4 +223,6 @@ function showElement() {
 spawnENEMIES();
 
 
-animate();
+if (gameover==false){
+    animate();
+}
