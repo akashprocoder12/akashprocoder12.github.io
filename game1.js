@@ -22,7 +22,7 @@ class Player {
         ctx.fill()
         ctx.fillStyle = "black"
         ctx.font = "30px Arial"
-        ctx.fillText("Score is "+score , 20,20)
+        ctx.fillText("Score is "+score , 20,40)
 
         
 
