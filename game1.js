@@ -22,7 +22,7 @@ class Player {
         ctx.fill()
         ctx.fillStyle = "black"
         ctx.font = "30px Arial"
-        ctx.fillText("Score is "+score , 40,40)
+        ctx.fillText("Score is "+score , 20,20)
 
         
 
@@ -78,7 +78,7 @@ class Enemy {
         ctx.fill()
         ctx.fillStyle = 'black'
         ctx.font = "10px Arial"
-        ctx.fillText("enemy", this.x, this.y);
+        ctx.fillText("enemy", this.x-this.x/2, this.y - 20);
         
         
     }
@@ -122,8 +122,8 @@ function spawnENEMIES() {
         const x_dif = canvas.width / 2 - x;
         const y_dif = canvas.height -120 - y;
         const angl = Math.atan2(y_dif, x_dif);
-        const x_v = Math.cos(angl);
-        const y_v = Math.sin(angl);
+        const x_v = 2*Math.cos(angl);
+        const y_v = 2*Math.sin(angl);
         const velocity = {
             x: x_v,
             y: y_v
@@ -166,7 +166,7 @@ window.addEventListener('click', (e) => {
     const angle = Math.atan2(y_diff, x_diff);
     const x_velocity = Math.cos(angle);
     const y_velocity = Math.sin(angle);
-    const amplity = 3;
+    const amplity = 6;
     velocity = {
         x: amplity * x_velocity,
         y: amplity * y_velocity
