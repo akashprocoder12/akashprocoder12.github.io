@@ -216,5 +216,8 @@ function showElement() {
 if (!gameover){
     spawnENEMIES();
 }
+else {
+    enemies.length = 0;
+}    
 
 animate();
