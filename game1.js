@@ -130,7 +130,7 @@ function spawnENEMIES() {
         }
         enemies.push(new Enemy(x, y, 20, "green", velocity))
         console.log(enemies)
-    }, 5000)
+    }, 1000)
 
 }
 
