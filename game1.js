@@ -10,7 +10,7 @@ console.log(canvas);
 const ctx = canvas.getContext('2d');
 
 let score = 0;
-let gameover = false;
+let  gameover = false;
 class Player {
     constructor(x, y, radius, color) {
         this.x = x;
@@ -120,21 +120,23 @@ class Enemy {
 const enemies = [];
 
 function spawnENEMIES() {
-    setInterval(() => {
-        const x = Math.random() * canvas.width;
-        const y = 10;
-        const x_dif = canvas.width / 2 - x;
-        const y_dif = canvas.height -120 - y;
-        const angl = Math.atan2(y_dif, x_dif);
-        const x_v = 2*Math.cos(angl);
-        const y_v = 2*Math.sin(angl);
-        const velocity = {
-            x: x_v,
-            y: y_v
-        }
-        enemies.push(new Enemy(x, y, 20, "green", velocity))
-        console.log(enemies)
-    }, 500)
+    if (!gameover){
+        setInterval(() => {
+            const x = Math.random() * canvas.width;
+            const y = 10;
+            const x_dif = canvas.width / 2 - x;
+            const y_dif = canvas.height -120 - y;
+            const angl = Math.atan2(y_dif, x_dif);
+            const x_v = 2*Math.cos(angl);
+            const y_v = 2*Math.sin(angl);
+            const velocity = {
+                x: x_v,
+                y: y_v
+            }
+            enemies.push(new Enemy(x, y, 20, "green", velocity))
+            console.log(enemies)
+        }, 500)
+    }
 
 }
 
@@ -208,16 +210,15 @@ function showElement() {
     let element = document.getElementById('myElement');
     
     // Reset the display property to restore default behavior
-    element.style.display = '';
+    if (gameover){
+        element.style.display = '';
     gameover = false;
     enemies.length = 0;
+    }
 }
 
-if (!gameover){
-    spawnENEMIES();
-}
-else {
-    enemies.length = 0;
-}    
+
+spawnENEMIES();
+
 
 animate();
