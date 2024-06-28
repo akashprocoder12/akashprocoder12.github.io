@@ -2,7 +2,8 @@ const canvas = document.querySelector('canvas');
 canvas.width = innerWidth
 canvas.height = innerHeight
 canvas.style.background = "pink";
-
+const container = document.querySelector(".container");
+container.style.display = "None";
 console.log(canvas);
 
 
@@ -111,6 +112,7 @@ class Enemy {
             enemies.length = 0;
             score = 0;
             gameover = true;
+            container.style.display = "";
         }
 
 
