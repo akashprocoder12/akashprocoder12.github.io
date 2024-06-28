@@ -216,6 +216,7 @@ function showElement() {
         element.style.display = '';
     gameover = false;
     enemies.length = 0;
+    container.style.display = "None";
     }
 }
 
