@@ -26,3 +26,21 @@ function scrollHeader(){
     if(this.scrollY >= 80) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
+
+
+
+
+//dfg
+document.getElementById('car-rental-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Form submitted successfully!');
+});
+
+document.getElementById('same-location').addEventListener('change', function() {
+    const dropoffLocationGroup = document.getElementById('dropoff-location-group');
+    if (this.checked) {
+        dropoffLocationGroup.style.display = 'none';
+    } else {
+        dropoffLocationGroup.style.display = 'block';
+    }
+});
