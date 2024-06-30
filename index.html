@@ -1,34 +1,389 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            margin: 0;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
-    <canvas id="myElement"></canvas>
-    <div class="container">
-    <h1>game over </h1>
-    <p> touch here to restart the game  <button onclick="showElement()">start game again</button> </p>
-</div>
-    <script src="game1.js"></script>
-    
-</body>
+        <!--=============== BOXICONS ===============-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="navbar.css">
+
+        
+
+        <title>Car bookings wesite</title>
+    </head>
+    <body>
+        <!--=============== HEADER ===============-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">Car bookings</a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">
+                                <i class='bx bx-car nav__icon'></i>
+                                <span class="nav__name">Cars</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav__item">
+                            <a href="#about" class="nav__link">
+                                <i class='bx bx-taxi nav__icon'></i>
+                                <span class="nav__name">Cabs</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#skills" class="nav__link">
+                                <i class="fas fa-bicycle nav__icon"></i>
+                                <span class="nav__name">bike/scooty</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#portfolio" class="nav__link">
+                                <i class='bx bxs-info-circle nav__icon'></i>
+                                <span class="nav__name">about us</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#contactme" class="nav__link">
+                                <i class='bx bx-message-square-detail nav__icon'></i>
+                                <span class="nav__name">Contact us</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <img src="assets/img/perfil.png" alt="" class="nav__img">
+            </nav>
+        </header>
+
+        <main>
+            <!--=============== HOME ===============-->
+            <section class="container section section__height" id="home">
+                
+                <h2 class="section__title">Catogories</h2>
+                <div class="grid-container">
+                <div class="product-card">
+                    <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                    <div class="product-card-content">
+                        <h2>Product Name</h2>
+                        <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                        <div class="price">$99.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                    <div class="product-card-content">
+                        <h2>Product Name</h2>
+                        <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                        <div class="price">$99.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                    <div class="product-card-content">
+                        <h2>Product Name</h2>
+                        <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                        <div class="price">$99.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                    <div class="product-card-content">
+                        <h2>Product Name</h2>
+                        <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                        <div class="price">$99.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                    <div class="product-card-content">
+                        <h2>Product Name</h2>
+                        <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                        <div class="price">$99.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                    <div class="product-card-content">
+                        <h2>Product Name</h2>
+                        <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                        <div class="price">$99.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="data:image/jpeg;base64,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"  alt="Product Image">
+                    <div class="product-card-content">
+                        <h2>Product Name</h2>
+                        <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                        <div class="price">$99.99</div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <!--=============== ABOUT ===============-->
+            <section class="container section section__height" id="about">
+                <h2 class="section__title">Book Cabs</h2>
+                <div class="grid-container">
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="data:image/jpeg;base64,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"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--=============== SKILLS ===============-->
+            <section class="container section section__height" id="skills">
+                <h2 class="section__title">Book scooty/bike</h2>
+                <div class="grid-container">
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="data:image/jpeg;base64,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"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--=============== PORTFOLIO ===============-->
+            <section class="container section section__height" id="portfolio">
+                <h2 class="section__title">About Us</h2>
+                <div class="grid-container">
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Con</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="data:image/jpeg;base64,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"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--=============== CONTACTME ===============-->
+            <section class="container section section__height" id="contactme">
+                <h2 class="section__title">Contact Us</h2>
+                <div class="grid-container">
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20200722044145_WX22.jpg&w=736&h=488&q=75&c=1"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="data:image/jpeg;base64,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"  alt="Product Image">
+                        <div class="product-card-content">
+                            <h2>Product Name</h2>
+                            <p>This is a detailed description of the product. It includes all the key features and benefits that the product offers.</p>
+                            <div class="price">$99.99</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+
+        <!--=============== MAIN JS ===============-->
+        <script src="navbar.js"></script>
+    </body>
 </html>
