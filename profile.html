@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Profile Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 3px solid #ddd;
+        }
+        .profile-header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .profile-header p {
+            color: #666;
+            margin: 5px 0;
+        }
+        .profile-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            text-decoration: none;
+        }
+        .buttons button {
+            background-color: #0773e7;
+            color: white;
+            border: none;
+            padding: 8px 17px;
+            /* margin: 5px; */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+        .photo-container {
+            position: relative;
+        }
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .delete-option {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+            display: none;
+        }
+        .add-photo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .add-photo input[type="file"] {
+            display: none;
+        }
+        .add-photo label {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .add-photo label:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const photoContainers = document.querySelectorAll('.photo-container img');
+            photoContainers.forEach(photo => {
+                photo.addEventListener('click', (event) => {
+                    const deleteOption = photo.nextElementSibling;
+                    deleteOption.style.display = 'block';
+                    event.stopPropagation();
+                });
+            });
+        });
+
+        function deletePhoto(deleteButton) {
+            const container = deleteButton.parentElement;
+            container.remove();
+        }
+
+        function handleAddPhoto(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const newPhotoContainer = document.createElement('div');
+                    newPhotoContainer.classList.add('photo-container');
+                    newPhotoContainer.innerHTML = `
+                        <img src="${e.target.result}" alt="New Photo">
+                        <div class="delete-option" onclick="deletePhoto(this)">X</div>
+                    `;
+                    document.querySelector('.photo-gallery').appendChild(newPhotoContainer);
+                    newPhotoContainer.querySelector('img').addEventListener('click', (event) => {
+                        const deleteOption = newPhotoContainer.querySelector('.delete-option');
+                        deleteOption.style.display = 'block';
+                        event.stopPropagation();
+                    });
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.addEventListener('click', () => {
+            const deleteButtons = document.querySelectorAll('.delete-option');
+            deleteButtons.forEach(button => {
+                if (button.style.display == 'block') {
+                    button.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <img src="https://via.placeholder.com/120" alt="Profile Picture">
+            <h1>John Doe</h1>
+            <p>Photographer & Travel Blogger</p>
+        </div>
+        <div class="profile-info">
+            <p><strong>Location:</strong> New York, USA</p>
+            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>Website:</strong> www.johndoe.com</p>
+        </div>
+        <div class="buttons">
+            <a href="edit-profile.html"><button>Edit Profile</button></a>
+            <a href="https://www.example.com/share?profile=johndoe" target="_blank"><button>Share Profile</button></a>
+        </div>
+        <div class="add-photo">
+            <label for="add-photo-input">Add Photo</label>
+            <input type="file" id="add-photo-input" onchange="handleAddPhoto(this)" accept="image/*">
+        </div>
+        <div class="photo-gallery">
+            <!-- Existing photos with click-to-delete functionality -->
+            <div class="photo-container">
+                <img src="https://via.placeholder.com/100" alt="Photo 1">
+                <div class="delete-option" onclick="deletePhoto(this)">X</div>
+            </div>
+            <div class="photo-container">
+                <img src="https://via.placeholder.com/100" alt="Photo 2">
+                <div class="delete-option" onclick="deletePhoto(this)">X</div>
+            </div>
+            <!-- Add more photos as needed -->
+        </div>
+    </div>
+</body>
+</html>
