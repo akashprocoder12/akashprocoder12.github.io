@@ -1,108 +1,875 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cab Booking Service</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkz83RKNeOMxY7b5DOuBKK2GcOxL8IMpg&libraries=places"></script>
-    <script  defer>
-        let map, pickupAutocomplete, destinationAutocomplete, directionsService, directionsRenderer;
 
-document.addEventListener("DOMContentLoaded", function() {
-    initMap();
-});
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-function initMap() {
-    const mapElement = document.getElementById('map');
-    map = new google.maps.Map(mapElement, {
-        center: { lat: 28.6139, lng: 77.2088 },
-        zoom: 13
-    });
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="style.css">
 
-    const pickupInput = document.getElementById('pickup');
-    const destinationInput = document.getElementById('destination');
-
-    pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
-    destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput);
-
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
-
-    document.getElementById('estimateFare').addEventListener('click', estimateFare);
-    document.getElementById('bookCab').addEventListener('click', bookCab);
-}
-
-function estimateFare() {
-    const pickupPlace = pickupAutocomplete.getPlace();
-    const destinationPlace = destinationAutocomplete.getPlace();
-
-    if (!pickupPlace || !destinationPlace) {
-        alert("Please select both pick-up and destination locations.");
-        return;
-    }
-
-    directionsService.route({
-        origin: pickupPlace.geometry.location,
-        destination: destinationPlace.geometry.location,
-        travelMode: google.maps.TravelMode.DRIVING
-    }, (response, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-            directionsRenderer.setDirections(response);
-            const distance = response.routes[0].legs[0].distance.value / 1000;
-            const fare = calculateFare(distance);
-            document.getElementById('fareEstimate').textContent = `Estimated Fare: $${fare.toFixed(2)}`;
-        } else {
-            alert('Directions request failed due to ' + status);
-        }
-    });
-}
-
-function calculateFare(distance) {
-    const baseFare = 50;
-    const costPerKm = 10;
-    return baseFare + (costPerKm * distance);
-}
-
-function bookCab() {
-    alert("Cab booked successfully!");
-}
-
-    </script>
+    <title>Grandma's kitchen</title>
 </head>
+
 <body>
-    <div class="container mt-4">
-        <h1 class="text-center">Book Your Cab</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="pickup">Pick Up Location</label>
-                    <input id="pickup" class="form-control" type="text" placeholder="Enter pick-up location">
-                </div>
-                <div class="form-group">
-                    <label for="destination">Destination Location</label>
-                    <input id="destination" class="form-control" type="text" placeholder="Enter destination location">
-                </div>
-                <button id="estimateFare" class="btn btn-primary">Estimate Fare</button>
-                <button id="bookCab" class="btn btn-success">Book Cab</button>
-                <p id="fareEstimate" class="mt-3"></p>
+
+    <header>
+        <label>
+            <input type="checkbox">
+            <div class="toggle">
+                <span class="top-line common"></span>
+                <span class="middle-line common"></span>
+                <snap class="bottom-line common"></snap>
             </div>
-            <div class="col-md-6">
-                <div id="map"></div>
+            <div class="slide">
+                <h1>MENU</h1>
+                <ul>
+                    <li><a href=""><i class="fas fa-tv"></i>dashboard</a></li>
+                    <li><a href=""><i class="far fa-user"></i>profile</a></li>
+                    <li><a href=""><i class="fab fa-gripfire"></i>trending</a></li>
+                    <li><a href=""><i class="far fa-comments"></i>messages</a></li>
+                    <li><a href=""><i class="far fa-folder"></i>file manager</a></li>
+                    <li><a href=""><i class="far fa-address-book"></i>dashboard</a></li>
+
+
+
+
+                </ul>
+            </div>
+        </label>
+    </header>
+
+    <!--=============== NAVBAR ===============-->
+    <nav class="nav">
+        <ul class="nav__list">
+            <a href="#home" class="nav__link active-link">
+                <i class="ri-home-5-line"></i>
+                <span class="nav__name">
+                    home
+                </span>
+            </a>
+
+            <a href="#profile" class="nav__link">
+                <i class="ri-user-line"></i>
+                <span class="nav__name">
+                    Services
+                </span>
+            </a>
+
+            <a href="#message" class="nav__link">
+                <i class="ri-chat-3-line"></i>
+                <span class="nav__name">
+                    Explore
+                </span>
+            </a>
+
+            <a href="#mail" class="nav__link">
+                <i class="ri-mail-open-line"></i>
+                <span class="nav__name">
+                    About us
+                </span>
+            </a>
+
+            <a href="#settings" class="nav__link">
+                <i class="ri-settings-line"></i>
+                <span class="nav__name">
+                    Join us
+                </span>
+            </a>
+
+            <svg class="indicator" width="94" height="56" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="47" cy="28" rx="24" ry="28" />
+                <path d="M24 20C24 20 28 55.9999 48 56L0 55.9997C18 55.9998 24 20 24 20Z" />
+                <path d="M70 20C70 20 66 55.9999 46 56L94 55.9997C76 55.9998 70 20 70 20Z" />
+            </svg>
+        </ul>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="container">
+        <section id="home">
+            <h2><q>grandma's kitchen</q></h2>
+            <div class="advertisement">
+            <div class="container-home">
+                <h1>Grandma's Kitchen</h1>
+        
+                <div class="poem">
+                    <div class="poem-title">A Taste of Love</div>
+                    <p>
+                        In every dish, a tale unfolds,<br>
+                        Of warmth and care, of love untold.<br>
+                        A spoonful here, a dash of that,<br>
+                        From Grandma's hands, where memories sat.
+                    </p>
+                </div>
+        
+                <div class="quote">
+                    "The secret ingredient is always love."
+                </div>
+        
+                <div class="poem">
+                    <div class="poem-title">Flavors of Home</div>
+                    <p>
+                        The kitchen hums, a cozy sound,<br>
+                        Where flavors of home, in pots are found.<br>
+                        A pinch of tradition, a handful of spice,<br>
+                        Served with a smile, warm and nice.
+                    </p>
+                </div>
+        
+                <div class="quote">
+                    "Good food is all the sweeter when shared with those you love."
+                </div>
+        
+                <div class="poem">
+                    <div class="poem-title">From Grandma's Hands</div>
+                    
+                        
+                    <p>
+                        With hands that knew the way by heart,<br>
+                        She made each meal a work of art.<br>
+                        A legacy of taste and care,<br>
+                        In every dish, a memory rare.
+                    </p>
+                
+                </div>
+        
+                <div class="quote">
+                    "Cooking is at once child's play and adult joy. And cooking done with care is an act of love."
+                </div>
+        
+                <div class="poem">
+                    <div class="poem-title">Savor the Tradition</div>
+                    <p>
+                        From dough to bread, from field to plate,<br>
+                        Each bite a journey, each meal a fate.<br>
+                        Savor the past, the now, the then,<br>
+                        At Grandma's table, come again.
+                    </p>
+                </div>
+        
+                <div class="quote">
+                    "Food is symbolic of love when words are inadequate."
+                </div>
+        
+                <div class="poem">
+                    <div class="poem-title">The Heart of the Home</div>
+                    <p>
+                        The kitchen is where the heart resides,<br>
+                        Where laughter and warmth and love abides.<br>
+                        In every flavor, a story told,<br>
+                        Of Grandma’s kitchen, rich and bold.
+                    </p>
+                </div>
+        
+                <div class="quote">
+                    "A recipe has no soul. You, as the cook, must bring soul to the recipe."
+                </div>
+        
+                <div class="signature">
+                    &mdash; Grandma's Kitchen
+                </div>
             </div>
         </div>
-    </div>
+        
+        </section>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+        <section id="profile">
+            <h2>Profile</h2>
+        </section>
+
+        <section id="message">
+            <h2>Explore</h2>
+            <div class="content-expo">
+            <div class="content">
+
+                <div class="section">
+                    <div class="section-content">
+                        <h2>The Heart of the Home - Housewives and Their Mess</h2>
+                        <p>
+                            In every household, the kitchen is the heart of the home. Here, housewives pour their love and care into every meal they prepare. These meals are not just food; they are a labor of love, filled with the warmth and memories of home. At Grandma's Kitchen, we bring this warmth to your table, providing you with homemade food that is as nutritious as it is delicious.
+                        </p>
+                        <p>
+                            Our dedicated housewives work tirelessly to ensure that every dish is prepared with the utmost care, using the freshest ingredients and time-honored recipes. Unlike restaurant food, which is often prepared in large quantities with little attention to detail, our meals are made with a personal touch, ensuring that you get the best of both taste and nutrition.
+                        </p>
+                    </div>
+                    <!-- <img src="../logo.jpg" alt="Grandma's Kitchen" height="180" width="180"> -->
+                </div>
+        
+                <div class="section">
+                    <div class="section-content">
+                        <h2>Why Choose Homemade Food Over Restaurant Food?</h2>
+                        <p>
+                            In today's fast-paced world, the convenience of restaurant food is often tempting. However, this convenience comes at a cost. Restaurant food is often of lower quality, prepared with cheap ingredients and loaded with unhealthy additives to enhance taste. Moreover, the high prices of restaurant meals do not guarantee good quality. In fact, many people have experienced food poisoning and other health issues after consuming restaurant food.
+                        </p>
+                        <ul class="advantages">
+                            <li>High Quality Ingredients: Our food is made with fresh, locally sourced ingredients, free from preservatives and artificial flavors.</li>
+                            <li>Personalized Care: Every meal is prepared with love and care, just as you would in your own home.</li>
+                            <li>Affordable: Enjoy healthy, homemade meals at a fraction of the cost of restaurant food.</li>
+                            <li>Health Benefits: Homemade food is healthier, helping you avoid the risks of food poisoning and other health issues associated with restaurant food.</li>
+                            <li>Support Local: By choosing Grandma's Kitchen, you are supporting local families and housewives who work hard to provide you with nutritious meals.</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="section">
+                    <div class="section-content">
+                        <h2>Experience the Difference with Grandma's Kitchen</h2>
+                        <p>
+                            At Grandma's Kitchen, we believe in the power of homemade food. Our meals are crafted with the same love and care that you would find in your own kitchen. We are committed to providing you with delicious, nutritious meals that not only satisfy your hunger but also nourish your soul.
+                        </p>
+                        <p>
+                            Say goodbye to the low quality, high-priced restaurant food, and experience the difference with Grandma's Kitchen. Let us bring the taste of home to your table, one meal at a time.
+                        </p>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        
+            <div class="container-all">
+            <div class="container-card">
+                <div class="mess-name">
+                    <h3>messa name</h3>
+                </div>
+                <div class="image">
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    
+                    
+                   
+                </div>
+                <div class="types">
+                    <h3>types of food/meal served.</h3>
+                    <div class="make-scroll">
+                    <ul>
+                        <li>Lorem.</li>
+                        <li>Labore.</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="prices">
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                    </dl>
+                    
+                </div>
+                <div class="kn"><button class="button-know"><a href="">know more...</a></button></div>
+            </div>
+            <div class="container-card">
+                <div class="mess-name">
+                    <h3>messa name</h3>
+                </div>
+                <div class="image">
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    
+                    
+                   
+                </div>
+                <div class="types">
+                    <h3>types of food/meal served.</h3>
+                    <div class="make-scroll">
+                    <ul>
+                        <li>Lorem.</li>
+                        <li>Labore.</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="prices">
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                    </dl>
+                    
+                </div>
+                <div class="kn"><button class="button-know"><a href="">know more...</a></button></div>
+            </div>
+            <div class="container-card">
+                <div class="mess-name">
+                    <h3>messa name</h3>
+                </div>
+                <div class="image">
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    
+                    
+                   
+                </div>
+                <div class="types">
+                    <h3>types of food/meal served.</h3>
+                    <div class="make-scroll">
+                    <ul>
+                        <li>Lorem.</li>
+                        <li>Labore.</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="prices">
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                    </dl>
+                    
+                </div>
+                <div class="kn"><button class="button-know"><a href="">know more...</a></button></div>
+            </div>
+            <div class="container-card">
+                <div class="mess-name">
+                    <h3>messa name</h3>
+                </div>
+                <div class="image">
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    
+                    
+                   
+                </div>
+                <div class="types">
+                    <h3>types of food/meal served.</h3>
+                    <div class="make-scroll">
+                    <ul>
+                        <li>Lorem.</li>
+                        <li>Labore.</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="prices">
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                    </dl>
+                    
+                </div>
+                <div class="kn"><button class="button-know"><a href="">know more...</a></button></div>
+            </div>
+            <div class="container-card">
+                <div class="mess-name">
+                    <h3>messa name</h3>
+                </div>
+                <div class="image">
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    
+                    
+                   
+                </div>
+                <div class="types">
+                    <h3>types of food/meal served.</h3>
+                    <div class="make-scroll">
+                    <ul>
+                        <li>Lorem.</li>
+                        <li>Labore.</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="prices">
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                    </dl>
+                    
+                </div>
+                <div class="kn"><button class="button-know"><a href="">know more...</a></button></div>
+            </div>
+            <div class="container-card">
+                <div class="mess-name">
+                    <h3>messa name</h3>
+                </div>
+                <div class="image">
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    <figure>
+                        <img src="../logo.jpg" alt="image food">
+                        <figcaption>hero ji</figcaption>
+                        
+                    </figure>
+                    
+                    
+                   
+                </div>
+                <div class="types">
+                    <h3>types of food/meal served.</h3>
+                    <div class="make-scroll">
+                    <ul>
+                        <li>Lorem.</li>
+                        <li>Labore.</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                        <li>Quasi!</li>
+                        <li>Dicta?</li>
+                        <li>Consequatur!</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="prices">
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                        <dt>HTML</dt>
+                        <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+                        <dt>CSS</dt>
+                        <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+                    </dl>
+                    
+                </div>
+                <div class="kn"><button class="button-know"><a href="">know more...</a></button></div>
+            </div>
+        </div>
+        </section>
+
+        <section id="mail">
+            <h2>Mail</h2>
+        </section>
+
+        <section id="settings">
+            <h2>Settings</h2>
+        </section>
+    </main>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="main.js"></script>
 </body>
+
 </html>
