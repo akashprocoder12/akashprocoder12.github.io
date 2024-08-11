@@ -7,7 +7,7 @@
   --first-color: hsl(231, 48%, 56%);
   --title-color: hsl(231, 24%, 20%);
   --text-color: hsl(231, 4%, 45%);
-  --body-color: gold;
+  --body-color: lightyellow;
   --container-color: #fff;
 
   /*========== Font and typography ==========*/
@@ -64,7 +64,15 @@ a {
 .container h2 {
   text-align: center;
   color: var(--title-color);
+  
 }
+/* 
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: yellow;
+  line-height: 2rem;
+} */
 
 .nav {
   position: fixed;
@@ -344,7 +352,7 @@ img {
 .container-card {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.577);
   display: grid;
-  max-width: 24rem;
+  max-width: 20rem;
   grid-template-areas:
   "ms ms" 
   "im tp"
@@ -372,6 +380,7 @@ img {
   /* background-image: linear-gradient(rgba(98, 7, 7, 0.217), rgba(255, 255, 255, 0)); */
   border-radius: 9px 10px 0 0;
   
+  
 }
 
 .image{
@@ -385,7 +394,7 @@ border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 overflow: hidden;
 overflow-x: auto;
 scrollbar-width: thin;
-scrollbar-color: black #ffffff;
+scrollbar-color: rgba(0, 0, 0, 0.2) #f9faf8;
 scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
 }
@@ -397,7 +406,7 @@ scroll-snap-type: x mandatory;
 
 .image img {
   
-max-height: 8rem;
+max-height: 6rem;
 width: auto;
 border: 2px double black;
 border-radius: 50%;
@@ -422,8 +431,9 @@ margin:0 1.4rem ;
 
 .types h3 {
   font-size: 0.8rem;
-  
+  /* margin-left: 1rem; */
   display : flex ;
+  text-align: center;
   align-items: center;
   justify-content: center;
   height: 2rem;
@@ -437,7 +447,7 @@ margin:0 1.4rem ;
   line-height: 2rem;
   /* text-shadow: 1px 1px 2px rgb(11, 11, 11); */
   scrollbar-width: thin;
-  scrollbar-color: black #ffffff;
+  scrollbar-color: rgba(0, 0, 0, 0.2) #f9faf8;
   /* background-image: linear-gradient(rgb(251, 218, 165),rgba(232, 249, 45, 0.646)); */
   border-bottom: 1px solid rgba(128, 128, 128, 0.5);
   scroll-snap-type: y mandatory;
@@ -446,7 +456,7 @@ margin:0 1.4rem ;
 
 .make-scroll li {
   scroll-snap-align: start;
-  padding: 0 20% ;
+  padding: 0 8% ;
   list-style-position: inside;
   list-style-type:decimal ;
   
@@ -454,10 +464,10 @@ margin:0 1.4rem ;
 
 .prices {
   grid-area: dr;
-  height: 8rem;
+  height: 6rem;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: black #f9faf8;
+  scrollbar-color: rgba(0, 0, 0, 0.2) #f9faf8;
   /* background-image: linear-gradient(rgb(250, 233, 207),rgba(232, 249, 45, 0.646)); */
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -528,6 +538,8 @@ a{
   color: rgb(26, 26, 25);
 }
 
+
+
 @media  screen and (max-width :450px) {
   .container-all{
     display: block;
@@ -541,9 +553,10 @@ a{
       "im tp"
       "dr dr"
       "kw kw";
-      margin: 3rem 1rem  ;
+      margin: 3rem auto ;
       border-radius: 20px;
       grid-template-columns: 1fr 1fr;
+      
   }
   
   
@@ -562,13 +575,13 @@ a{
   
 
   .types h3 {
-      height: 4rem;
+      height: 2rem;
       padding-left: 1rem;
       font-size: 0.8rem;
 
   }
   .types .make-scroll{
-      height: 8rem ;
+      height: 10rem ;
       
   }
 
@@ -591,6 +604,82 @@ a{
 }
 
 
+.whatsapp-icon {
+  font-size: 50px; /* Adjust the size */
+  color: #25D366; /* WhatsApp green color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  position: fixed;
+  bottom: 7rem;
+  right: 10px;
+}
+
+.whatsapp-icon a {
+  text-decoration: none;
+  color: #25D366;
+}
+
+.whatsapp-icon:hover a{
+  color: #128C7E; /* Darker green on hover */
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+
+
+.container-services {
+  /* max-width: 1200px; */
+  /* margin: 0 auto; */
+  font-family: Arial, sans-serif;
+  /* background-color: #f8f8f8; */
+  margin: 0;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+.service {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.service:hover {
+  transform: scale(1.05);
+}
+.service h2 {
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+.service p {
+  color: #34495e;
+  margin-bottom: 10px;
+}
+.service ul {
+  list-style-type: none;
+  padding: 0;
+  color: #7f8c8d;
+}
+.service ul li {
+  padding: 5px 0;
+}
+
+
 .advertisement {
   font-family: 'Georgia', serif;
   /* background-color: #f8f0e3; */
@@ -605,9 +694,10 @@ a{
   /* max-width: 800px; */
   padding: 20px;
   margin: 20px;
-  background-color: #fff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f7fac5e1;
+  box-shadow: 0px 4px 8px rgb(209, 135, 135);
   border-radius: 8px;
+  width: 85%;
 }
 h1 {
   text-align: center;
