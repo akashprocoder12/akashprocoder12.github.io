@@ -262,7 +262,7 @@ header label {
   border-radius: 3px;
   top:0px;
   background-color: #fff;
-  /* box-shadow: 0 1px 10px rgba(0,0,0,0.3); */
+  
 
 }
 
@@ -340,17 +340,10 @@ img {
 
 
 
-/* .image-container img:hover{
-  transform: scale(1.1);
-  z-index: 1;
-  overflow: hidden;
-} */
-
-
 
 
 .container-card {
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.577);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   display: grid;
   max-width: 20rem;
   grid-template-areas:
@@ -361,9 +354,9 @@ img {
   grid-template-columns: 4fr 5fr;
   margin: 45px ;
   /* background-color: #fafafa; */
-  background-color: #fff;
+  background-color: #ffffff;
   /* border: .5px solid black; */
-  border-radius: 10px;
+  border-radius: 5px;
   
   
 }
@@ -375,10 +368,10 @@ img {
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid rgba(128, 128, 128, 0.5);
-  color: #000000;
+  color: #ff0000;
   /* text-shadow: 1px 2px   4px #ffff70; */
   /* background-image: linear-gradient(rgba(98, 7, 7, 0.217), rgba(255, 255, 255, 0)); */
-  border-radius: 9px 10px 0 0;
+  /* border-radius: 9px 10px 0 0; */
   
   
 }
@@ -468,7 +461,7 @@ margin:0 1.4rem ;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.2) #f9faf8;
-  /* background-image: linear-gradient(rgb(250, 233, 207),rgba(232, 249, 45, 0.646)); */
+  
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
@@ -514,30 +507,25 @@ a{
 }
 .button-know {
   padding: 0.5rem 0.8rem;
-  border: 1px  solid black;
-  /* height: 2rem; */
+  border: 1px  solid rgb(255, 255, 255);
+  
   border-radius: 6px ;
   margin: 6px;
-  background-image: linear-gradient(white ,limegreen);
+  background-image: linear-gradient(white ,lightblue);
   transition: 0.1s;
-  box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 2px black;
 }
 
 
 .button-know:hover{
-  background-image: linear-gradient(limegreen , white );
+  background-image: linear-gradient(rgb(0, 0, 255) , white );
   background-color: rgb(30, 119, 30);
-  /* text-shadow: 1px 1px 1px rgb(19, 19, 19); */
-  /* border-left: 1px  solid black;
-  border-top: 1px  solid black;
-  border-right: 5px  solid rgb(9, 9, 9);
-  border-bottom: 5px  solid rgb(17, 1, 1); */
-  /* padding: 0.3rem 0.8rem; */
+  
+  
 }
 .button-know:hover a{
-  color: rgb(26, 26, 25);
+  color: white;
 }
-
 
 
 @media  screen and (max-width :450px) {
@@ -678,68 +666,6 @@ h1 {
 .service ul li {
   padding: 5px 0;
 }
-
-
-.advertisement {
-  font-family: 'Georgia', serif;
-  /* background-color: #f8f0e3; */
-  color: #333;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.container-home {
-  /* max-width: 800px; */
-  padding: 20px;
-  margin: 20px;
-  background-color: #f7fac5e1;
-  box-shadow: 0px 4px 8px rgb(209, 135, 135);
-  border-radius: 8px;
-  width: 85%;
-}
-h1 {
-  text-align: center;
-  color: #d2691e;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
-.poem, .quote {
-  margin: 20px 0;
-  padding: 15px;
-  border-left: 4px solid #d2691e;
-  background-color: #fafafa;
-  border-radius: 4px;
-  font-size: 1.2em;
-  line-height: 2rem;
-}
-.poem-title {
-  font-weight: bold;
-  font-size: 1.5em;
-  color: #d2691e;
-  margin-bottom: 10px;
-  
-}
-.quote {
-  font-style: italic;
-  color: #555;
-  
-}
-.signature {
-  text-align: right;
-  font-style: italic;
-  color: #777;
-}
-
-.float {
-  height: 8rem;
-  width: auto;
-  margin: 0 50px 0px 5px;
-  float:left ;
-  display: flow-root;
-}
-
 
 .content-expo{
   
