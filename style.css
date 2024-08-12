@@ -542,7 +542,7 @@ a{
       "dr dr"
       "kw kw";
       margin: 3rem auto ;
-      border-radius: 20px;
+      border-radius: 3px;
       grid-template-columns: 1fr 1fr;
       
   }
@@ -665,6 +665,70 @@ h1 {
 }
 .service ul li {
   padding: 5px 0;
+}
+
+/* 
+.advertisement {
+  font-family: 'Georgia', serif;
+  background-color: #f8f0e3;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-home {
+  max-width: 800px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f7fac5e1;
+  box-shadow: 0px 4px 8px rgb(209, 135, 135);
+  border-radius: 8px;
+  width: 85%;
+}
+
+.poem, .quote {
+  margin: 20px 0;
+  padding: 15px;
+  border-left: 4px solid #d2691e;
+  background-color: #fafafa;
+  border-radius: 4px;
+  font-size: 1.2em;
+  line-height: 2rem;
+}
+.poem-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #d2691e;
+  margin-bottom: 10px;
+  
+}
+.quote {
+  font-style: italic;
+  color: #555;
+  
+}
+.signature {
+  text-align: right;
+  font-style: italic;
+  color: #777;
+}
+
+.float {
+  height: 8rem;
+  width: auto;
+  margin: 0 50px 0px 5px;
+  float:left ;
+  display: flow-root;
+}
+ */
+
+ h1 {
+  text-align: center;
+  color: #d2691e;
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
 
 .content-expo{
