@@ -879,14 +879,14 @@ h1 {
 
 .form-parent {
   font-family: 'Arial', sans-serif;
-            background-color: #f8f4e1;
+            
             color: #333;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            margin-bottom: 8rem;
 }
 
 
@@ -965,3 +965,4 @@ h2 {
 .form-container button:hover {
   background-color: #c67a4e;
 }
+
