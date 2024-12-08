@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const options = document.querySelectorAll(".option");
   const hint = document.getElementById("hint");
   const celebration = document.getElementById("celebration");
+  const crying = document.getElementById("crying");
   const timeLeft = document.getElementById("time-left");
   const scoreDisplay = document.getElementById("score");
   const mistakesDisplay = document.getElementById("mistakes");
@@ -173,10 +174,12 @@ document.addEventListener("DOMContentLoaded", () => {
         score++;
         scoreDisplay.textContent = score;
         celebration.classList.remove("hidden");
+        crying.classList.add("hidden");
         setTimeout(() => {
           nextQuestion();
         }, 2000);
       } else {
+        crying.classList.remove("hidden");
         const audio = new Audio("files/incorrect.wav");
         audio.play();
         mistakes++;
@@ -189,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function nextQuestion() {
     celebration.classList.add("hidden");
+    crying.classList.add("hidden");
     hint.classList.add("hidden");
 
     
