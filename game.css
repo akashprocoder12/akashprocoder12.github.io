@@ -46,17 +46,20 @@ body {
     padding: 20px;
     font-weight: bold;
     line-height: 1.6rem;
+    border: 1px solid white;
+    width: 95%;
+    margin: 20px auto;
   }
   
   .options {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin:40px auto ;
+    gap: 20px 10px;
+    margin:    25px auto 10px;
   }
   
   .option {
-    background-color: #00aaff; /* Blue button */
+    background-color: green; /* Blue button */
     color: #fff;
     border: none;
     padding: 10px;
@@ -66,13 +69,13 @@ body {
   }
   
   .option:hover {
-    background-color: #005f80; /* Darker blue on hover */
+    background-color: limegreen; /* Darker blue on hover */
   }
   
   #hint {
-    margin: 20px 0;
+    margin: 20px auto;
     font-size: 14px;
-    color: #fffb00; /* Red for hint */
+    color: lime; /* Red for hint */
   }
   
   .hidden {
@@ -81,7 +84,20 @@ body {
   
   .timer {
     font-size: 16px;
-    margin: 10px 0;
+    border: 1px solid white;
+    width: 95%;
+    margin: 20px auto;
+    
+    }
+  
+  #time-left{
+    font-weight: bold;
+    color: white;
+    font-size: large;
+    border: 1px solid white;
+    padding: 10px;
+    background-color: white;
+    color: black;
   }
   
   #celebration {
@@ -92,6 +108,6 @@ body {
   #crying {
     margin-top: 20px;
     font-size: 18px;
-    color: red ; /* Green for celebration */
+    color: red; 
   }
   
