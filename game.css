@@ -89,4 +89,9 @@ body {
     font-size: 18px;
     color: #00ff00; /* Green for celebration */
   }
+  #crying {
+    margin-top: 20px;
+    font-size: 18px;
+    color: red ; /* Green for celebration */
+  }
   
