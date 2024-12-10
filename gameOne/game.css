@@ -1,0 +1,131 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000; /* Black background */
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.game-container {
+  text-align: center;
+  
+  
+  
+ 
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+h1 , h2 {
+  color: white; /* Blue for title */
+  margin: 1rem auto;
+  border: 1px solid white;
+  width: 95%;
+  padding: 20px;
+  
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+ 
+  align-items: center;
+  justify-content: center ;
+  
+}
+
+.timer {
+  font-size: 16px;
+  border: 1px solid white;
+  width: 95%;
+  margin-top: 0.5rem;
+  
+}
+
+#time-left , #score , #mistakes{
+  font-weight: bold;
+  color: lime;
+  font-size: 2rem;
+  letter-spacing: 5px;  
+  padding: 8px 10px;
+  
+ 
+}
+  
+  .score-display p {
+   display: inline-block;
+   padding: 1rem 0;
+    
+  }
+  
+  .question-box {
+    margin: 20px 0;
+    padding: 20px;
+    font-weight: bold;
+    line-height: 1.8rem;
+    border: 1px solid white;
+    width: 95%;
+    margin: 20px auto;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+  }
+  
+  .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 10px;
+    margin:    25px auto 10px;
+  }
+  
+  .option {
+    background-color: green; /* Blue button */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .option:hover {
+    background-color: limegreen; /* Darker blue on hover */
+  }
+  
+  #hint {
+    margin: 20px auto;
+    font-size: 1rem;
+    color: lime; /* Red for hint */
+    border: 1px solid white;
+    width: 95%;
+    padding: 10px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  
+  #celebration {
+    margin: 20px auto;
+    font-size: 18px;
+    color: #00ff00; /* Green for celebration */
+    border: 1px solid white;
+    width: 95%;
+    padding: 10px;
+  }
+  #crying {
+    margin: 20px auto;
+    font-size: 18px;
+    color: red; 
+    border: 1px solid white;
+    width: 95%;
+    padding: 10px;
+  }
+  

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Over</title>
+  <link rel="stylesheet" href="gameover.css">
+</head>
+<body>
+  <div class="gameover-container">
+    <h1 class="gameover-title">GAME OVER</h1>
+    <p class="score-display">Your Score: <span id="score">0</span></p>
+    <p class="score-display">Your Mistakes: <span id="mistakes">0</span></p>
+    <button class="restart-button" onclick="restartGame()">Restart</button>
+  </div>
+
+  <script>
+    // Dynamically set score (example: replace with actual game logic)
+    document.getElementById("score").textContent = localStorage.getItem("score") || 0;
+
+    // Function to restart the game
+    function restartGame() {
+      window.location.href = "game.html"; // Redirect to the game page
+    }
+  </script>
+</body>
+</html>
