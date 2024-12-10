@@ -23,7 +23,7 @@ body{
 
 .score  {
     display:flex;
-    margin:  0.5rem auto 1rem;
+    margin:  1rem auto 1rem;
     border: 1px solid white;
     padding: 10px 5px;
     width: 95%;
