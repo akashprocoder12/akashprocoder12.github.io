@@ -55,11 +55,44 @@ function startTimer() {
 }
 
 function generateQuestion() {
-    const num1 = Math.floor(Math.random() * 20) + 2;
-    const num2 = Math.floor(Math.random() * 10) + 2;
+    const operation = Math.floor(Math.random() * 5); // Randomly choose an operation
+    let num1, num2, questionText, answer;
+
+    switch (operation) {
+        case 0: // Multiplication
+            num1 = Math.floor(Math.random() * 20) + 2;
+            num2 = Math.floor(Math.random() * 10) + 2;
+            questionText = `What is ${num1} x ${num2}?`;
+            answer = num1 * num2;
+            break;
+        case 1: // Square
+            num1 = Math.floor(Math.random() * 20) + 2;
+            questionText = `What is the square of ${num1}?`;
+            answer = num1 * num1;
+            break;
+        case 2: // Addition
+            num1 = Math.floor(Math.random() * 50) + 1;
+            num2 = Math.floor(Math.random() * 50) + 1;
+            questionText = `What is ${num1} + ${num2}?`;
+            answer = num1 + num2;
+            break;
+        case 3: // Subtraction
+            num1 = Math.floor(Math.random() * 50) + 1;
+            num2 = Math.floor(Math.random() * 50) + 1;
+            questionText = `What is ${num1} - ${num2}?`;
+            answer = num1 - num2;
+            break;
+        case 4: // Division with no remainder
+            num2 = Math.floor(Math.random() * 10) + 2;
+            num1 = num2 * (Math.floor(Math.random() * 10) + 2);
+            questionText = `What is ${num1} / ${num2}?`;
+            answer = num1 / num2;
+            break;
+    }
+
     return {
-        question: `What is ${num1} x ${num2}?`,
-        answer: num1 * num2
+        question: questionText,
+        answer: answer
     };
 }
 
