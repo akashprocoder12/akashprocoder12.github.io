@@ -213,9 +213,10 @@ li:hover {
     display: none;
   }
   .content {
+    width: calc(100% - 60px);
     margin-left: 60px;
+    padding: 0;
+    
   }
-  .div-flex ul {
-    width: 220px;
-  }
+  
 }
