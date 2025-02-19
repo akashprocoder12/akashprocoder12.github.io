@@ -1,2 +1,2 @@
-# akashprocoder12.github.io
-mandir to wahi banega
+# this is my portfolio , I am akash and I love coding . 
+## I want to become and AI engineer, currently learning ml , and mastering dsa!
