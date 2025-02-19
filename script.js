@@ -40,7 +40,7 @@ class Write_A {
   draw(x, y) {
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2);
-    ctx.fillStyle = `rgb(${this.vertical_distance},0,${this.vertical_distance})`;
+    ctx.fillStyle = `rgb(${this.vertical_distance*3},0,${this.vertical_distance})`;
     ctx.fill();
   }
 
@@ -89,7 +89,7 @@ class write_K {
   draw(x, y) {
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2);
-    ctx.fillStyle = `rgb(${this.vertical_distance},0,${this.vertical_distance})`;
+    ctx.fillStyle = `rgb(${this.vertical_distance*7},0,${this.vertical_distance})`;
     ctx.fill();
   }
 
@@ -134,7 +134,7 @@ class Write_A_2 {
   draw(x, y) {
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2);
-    ctx.fillStyle = `rgb(${this.vertical_distance},0,${this.vertical_distance})`;
+    ctx.fillStyle = `rgb(${this.vertical_distance*6},0,${this.vertical_distance})`;
     ctx.fill();
   }
 
@@ -180,7 +180,7 @@ class Write_S {
     draw(x, y) {
         ctx.beginPath();
         ctx.arc(x, y, 10, 0, Math.PI * 2);
-        ctx.fillStyle = `rgb(${this.vertical_distance},0,${this.vertical_distance})`;
+        ctx.fillStyle = `rgb(${this.vertical_distance*6},0,${this.vertical_distance})`;
         ctx.fill();
     }
     // 
@@ -242,7 +242,7 @@ class Write_H {
   draw(x, y) {
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2);
-    ctx.fillStyle = `rgb(${this.vertical_distance},0,${this.vertical_distance})`;
+    ctx.fillStyle = `rgb(${this.vertical_distance*5},0,${this.vertical_distance})`;
     ctx.fill();
   }
 
