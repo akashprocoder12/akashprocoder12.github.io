@@ -24,7 +24,7 @@ body {
     width: 50%;
     min-width: 300px;
     flex-grow: 1;
-    background:linear-gradient(130deg ,rgba(64, 0, 255, 0.471), rgba(34, 20, 20, 0.464), rgb(0, 0, 0));
+    /* background:linear-gradient(130deg ,rgba(64, 0, 255, 0.471), rgba(34, 20, 20, 0.464), rgb(0, 0, 0)); */
 }
 
 canvas{
@@ -101,12 +101,13 @@ canvas{
 
 /* tech skills */
 .skills-container {
-    width: 50%;
+    max-width: 800px;
     margin: auto;
     padding: 20px;
-    /* background-color: #f4f4f4; */
+    /* background: #f4f4f4; */
     border-radius: 10px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .skills-container h2 {
