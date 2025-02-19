@@ -219,6 +219,8 @@ canvas{
     canvas{
         height: 100px;
         width: 100%;
+        background: none;
+        box-shadow: none;
         
     }
     
