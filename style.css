@@ -134,3 +134,23 @@ body {
     gap: 1.5rem;
 }
 
+@media (max-width:768px){
+    .tech-skills-col ul {
+        gap:1rem;
+
+    }
+    .tech-skills-col {
+        padding: 5px;
+        border: none;
+        box-shadow: none;
+        background:none;
+        backdrop-filter: none;
+    }
+    .tech-skills-col h3 {
+        text-decoration: underline;
+    }
+    .tech-skills-col li{
+        background-color: black;
+    }
+}
+
