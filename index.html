@@ -1,140 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Confession Wall</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whisper Wall</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Whisper Wall</h1>
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by tag e.g. love"
+          oninput="filterConfessions()"
+        />
+      </div>
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928DAB);
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      position: relative;
-    }
-
-    a{
-        font-style: none;
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .container {
-      text-align: center;
-      animation: fadeIn 2s ease-out;
-    }
-
-    h1 {
-      font-size: 3em;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: slideInTop 1.5s ease-out;
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-top: 10px;
-      animation: fadeIn 3s ease-out;
-    }
-
-    .btn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 1em;
-      background: #fff;
-      color: #1f1c2c;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease-in-out;
-      animation: popIn 2s ease-out;
-    }
-
-    .btn:hover {
-      background: #ff9a9e;
-      color: white;
-      box-shadow: 0 0 30px rgba(255, 154, 158, 0.7);
-    }
-
-    .tag-preview {
-      margin-top: 50px;
-      opacity: 0.8;
-      font-size: 0.9em;
-      animation: fadeIn 4s ease-out;
-    }
-
-    .tag-preview span {
-      background: rgba(255,255,255,0.1);
-      padding: 5px 12px;
-      margin: 5px;
-      border-radius: 20px;
-      display: inline-block;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes slideInTop {
-      0% { transform: translateY(-50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* Stars background */
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: url('images/i_love_u-removebg-preview.png');
-      background-size: 100px 100px;
-      background-repeat: repeat;
-      background-position: center;
-      animation: moveStars 60s linear infinite;
-      z-index: -1;
-      opacity:  0.4;
-    }
-
-    @keyframes moveStars {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
-  </style>
-</head>
-<body>
-  <!-- <div class="stars"></div> -->
-  <div class="container">
-    <h1>Confess Anything</h1>
-    <p>Share your thoughts anonymously and freely.</p>
-    <button class="btn"><a href="confession.html">Confess now</a></button>
-    <div class="tag-preview">
-      <p>Popular Tags:</p>
-      <span>#love</span>
-      <span>#crush</span>
-      <span>#guilt</span>
-      <span>#secret</span>
-      <span>#regret</span>
+      <div id="confessionsList"></div>
     </div>
-  </div>
-</body>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="showModal()">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M12 5v14M5 12h14" />
+      </svg>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <h2>Whisper to the Universe</h2>
+        <textarea
+          id="confessionText"
+          placeholder="What's your secret?"
+          rows="5"
+        ></textarea>
+        <input
+          type="text"
+          id="confessionTags"
+          placeholder="Tags (comma separated)"
+          style="
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+          "
+        />
+        <button class="post-btn" onclick="postConfession()">
+          Release into the Cosmos
+        </button>
+        <button
+          class="post-btn"
+          onclick="hideModal()"
+          style="background: var(--meteor); margin-top: 0.5rem"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const API_URL = "https://confession-render.onrender.com";
+      let allConfessions = [];
+
+      function showModal() {
+        document.getElementById("modal").style.display = "flex";
+      }
+
+      function hideModal() {
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("confessionText").value = "";
+        document.getElementById("confessionTags").value = "";
+      }
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("modal");
+        if (event.target === modal) {
+          hideModal();
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", fetchConfessions);
+
+      async function fetchConfessions() {
+        try {
+          const response = await fetch(`${API_URL}/confessions`);
+          const confessions = await response.json();
+          allConfessions = confessions; // cache all
+          filterConfessions(); // trigger initial render
+        } catch (error) {
+          console.error("Error fetching confessions:", error);
+        }
+      }
+
+      function filterConfessions() {
+    const search = document.getElementById('searchInput').value.trim().toLowerCase();
+
+    const filtered = allConfessions
+        .filter(confession =>
+            search === '' ||
+            confession.tags.some(tag => tag.toLowerCase().includes(search))
+        )
+        .sort((a, b) => b.comments.length - a.comments.length);
+
+    renderConfessions(filtered);
+}
+
+
+      function renderConfessions(confessions) {
+        const container = document.getElementById("confessionsList");
+        container.innerHTML = confessions
+          .map(
+            (confession) => `
+                <div class="confession" data-id="${confession.id}">
+                    <p>${confession.text}</p>
+                    <div class="tags">
+                        ${confession.tags
+                          .map((tag) => `<span class="tag">${tag}</span>`)
+                          .join("")}
+                    </div>
+                    <button class="like-btn ${
+                      isLiked(confession.id) ? "liked" : ""
+                    }" 
+                            onclick="toggleLike('${confession.id}')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="${
+                          isLiked(confession.id) ? "#EF4444" : "none"
+                        }" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        ${confession.likes}
+                    </button>
+                    <div class="comments">
+                        ${confession.comments
+                          .map(
+                            (comment) => `
+                            <div class="comment">${comment}</div>
+                        `
+                          )
+                          .join("")}
+                    </div>
+                    <form class="comment-form" onsubmit="postComment(event, '${
+                      confession.id
+                    }')">
+                        <input type="text" placeholder="Add a comment" required style="flex:1; background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:0.5rem; border-radius:8px;">
+                        <button type="submit" style="background: var(--nebula); border:none; padding:0.5rem 1rem; border-radius:8px; color:white; cursor:pointer;">Post</button>
+                    </form>
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      document.addEventListener("DOMContentLoaded", fetchConfessions);
+
+      async function postConfession() {
+        const text = document.getElementById("confessionText").value;
+        const tags = document
+          .getElementById("confessionTags")
+          .value.split(",")
+          .map((tag) => tag.trim())
+          .filter((tag) => tag);
+
+        if (!text) return;
+
+        try {
+          const response = await fetch(`${API_URL}/confessions`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text, tags }),
+          });
+
+          document.getElementById("confessionText").value = "";
+          document.getElementById("confessionTags").value = "";
+          fetchConfessions();
+        } catch (error) {
+          console.error("Error posting confession:", error);
+        }
+      }
+
+      async function toggleLike(confessionId) {
+        const action = isLiked(confessionId) ? "unlike" : "like";
+
+        try {
+          const response = await fetch(`${API_URL}/like`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ confession_id: confessionId, action }),
+          });
+
+          const data = await response.json();
+          updateLocalStorage(confessionId, action);
+          fetchConfessions();
+        } catch (error) {
+          console.error("Error toggling like:", error);
+        }
+      }
+
+      function isLiked(confessionId) {
+        return localStorage.getItem(`liked_${confessionId}`) === "true";
+      }
+
+      function updateLocalStorage(confessionId, action) {
+        if (action === "like") {
+          localStorage.setItem(`liked_${confessionId}`, "true");
+        } else {
+          localStorage.removeItem(`liked_${confessionId}`);
+        }
+      }
+
+      async function postComment(event, confessionId) {
+        event.preventDefault();
+        const input = event.target.querySelector("input");
+        const comment = input.value;
+
+        try {
+          await fetch(`${API_URL}/comment`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ confession_id: confessionId, comment }),
+          });
+
+          input.value = "";
+          fetchConfessions();
+        } catch (error) {
+          console.error("Error posting comment:", error);
+        }
+      }
+    </script>
+  </body>
 </html>
