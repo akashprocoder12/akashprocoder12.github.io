@@ -1,156 +1,205 @@
+:root {
+    --space: #0F172A;
+    --nebula: #7C3AED;
+    --stardust: #E2E8F0;
+    --supernova: #FBBF24;
+    --blackhole: #020617;
+    --meteor: #475569;
+}
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    color: #00ffff;
 }
 
 body {
-    background: #000000;
-    
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--blackhole);
+    color: var(--stardust);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
     
 }
 
-
-
-
-
-.div-design-column{
-    margin: 1rem auto;
+#confessionsList {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    
-}
-
-.div-design-row{
-    
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: row;
     flex-wrap: wrap;
-    /* margin: 1rem auto; */
-    gap: 2rem;
-    margin: 1rem auto;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
 
 }
 
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    background: linear-gradient(45deg, #7C3AED, #F472B6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.05em;
+}
 
-.div-design-row img {
-    
-    display: block;
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--nebula);
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    
-}
-
-
-.div-design-row h1 {
-    font-weight: 100;
-}
-
-.bio-data {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid blue;
-    padding: 12px ;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0); 
-  backdrop-filter: blur(1px); 
-  -webkit-backdrop-filter: blur(1px); 
-
-    
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tech-skills{
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* border: 1px solid blue; */
-    padding: 12px ;
-    
+.fab:hover {
+    transform: scale(1.1) rotate(90deg);
 }
 
-.tech-skills li {
-    list-style: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border: 1px solid blue;
-    border-radius: 30px;
-    background: black;
-    line-height: 1.5rem;
-    font-weight: 200;
-    letter-spacing: 1px;
-    box-shadow: 2px 2px 12px #00ffff ;
-
-    
-    
-}
-
-.tech-skills ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.tech-skills h2 {
-    font-weight: 100;
-    margin:1rem auto ;
-}
-
-.tech-skills h3 {
-    font-weight: 300;
-    margin:1rem auto ;
-    padding: 10px;
-   letter-spacing: 1px;
-   font-size: 1.6rem;
-}
-
-.tech-skills-col {
-    
-    padding: 20px;
-    padding-bottom: 30px;
-    border: 1px solid rgb(0, 26, 255);
-    background: rgba(0, 0, 0, 0); 
-  backdrop-filter: blur(10px); 
-  -webkit-backdrop-filter: blur(10px); 
-    margin: 4rem auto;
-    max-width: 1100px;
+/* Confession Card */
+.confession {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease;
     min-width: 300px;
-    box-shadow: 1px 1px 12px ;
-
-
+    width: 500px;
+    max-width: 700px;
 }
 
-.tech-skills-col ul {
+/* .confession:hover {
+    transform: translateY(-2px);
+} */
+
+.confession p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+}
+
+/* Tags */
+.tags {
     display: flex;
-    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    background: rgba(124, 58, 237, 0.15);
+    color: #C4B5FD;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Like Button */
+.like-btn {
+    background: none;
+    border: none;
+    color: var(--stardust);
+    display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-@media (max-width:768px){
-    .tech-skills-col ul {
-        gap:1rem;
-
-    }
-    .tech-skills-col {
-        padding: 5px;
-        border: none;
-        box-shadow: none;
-        background:none;
-        backdrop-filter: none;
-    }
-    .tech-skills-col h3 {
-        text-decoration: underline;
-    }
-    .tech-skills-col li{
-        background-color: black;
-    }
+.like-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
 }
 
+.like-btn.liked {
+    color: #EF4444;
+}
+
+.like-btn.liked svg {
+    fill: #EF4444;
+}
+
+/* Comments */
+.comments {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+}
+
+.comment {
+    background: rgba(15, 23, 42, 0.4);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: var(--space);
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--stardust);
+    font-family: inherit;
+    margin: 1rem 0;
+    resize: vertical;
+}
+
+.post-btn {
+    background: var(--nebula);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.post-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}

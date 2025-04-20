@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper Wall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Whisper Wall</h1>
+        <div id="confessionsList"></div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="showModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+        </svg>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>Whisper to the Universe</h2>
+            <textarea id="confessionText" placeholder="What's your secret?" rows="5"></textarea>
+            <input type="text" id="confessionTags" placeholder="Tags (comma separated)" style="width: 100%; margin-bottom: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
+            <button class="post-btn" onclick="postConfession()">Release into the Cosmos</button>
+            <button class="post-btn" onclick="hideModal()" style="background: var(--meteor); margin-top: 0.5rem;">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // Original JavaScript remains unchanged except modal functions
+        const API_URL = 'https://confession-render.onrender.com';
+
+        // Modal functions
+        function showModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function hideModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('confessionText').value = '';
+            document.getElementById('confessionTags').value = '';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                hideModal();
+            }
+        }
+
+        // Rest of original JavaScript functions remain unchanged
+        document.addEventListener('DOMContentLoaded', fetchConfessions);
+
+        async function fetchConfessions() {
+            try {
+                const response = await fetch(`${API_URL}/confessions`);
+                const confessions = await response.json();
+                renderConfessions(confessions);
+            } catch (error) {
+                console.error('Error fetching confessions:', error);
+            }
+        }
+
+        function renderConfessions(confessions) {
+            const container = document.getElementById('confessionsList');
+            container.innerHTML = confessions.map(confession => `
+                <div class="confession" data-id="${confession.id}">
+                    <p>${confession.text}</p>
+                    <div class="tags">
+                        ${confession.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <button class="like-btn ${isLiked(confession.id) ? 'liked' : ''}" 
+                            onclick="toggleLike('${confession.id}')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="${isLiked(confession.id) ? '#EF4444' : 'none'}" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        ${confession.likes}
+                    </button>
+                    <div class="comments">
+                        ${confession.comments.map(comment => `
+                            <div class="comment">${comment}</div>
+                        `).join('')}
+                    </div>
+                    <form class="comment-form" onsubmit="postComment(event, '${confession.id}')">
+                        <input type="text" placeholder="Add a comment" required style="flex:1; background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:0.5rem; border-radius:8px;">
+                        <button type="submit" style="background: var(--nebula); border:none; padding:0.5rem 1rem; border-radius:8px; color:white; cursor:pointer;">Post</button>
+                    </form>
+                </div>
+            `).join('');
+        }
+
+        // const API_URL = 'http://localhost:8000'; // Update if your backend is hosted elsewhere
+
+        // Load confessions on page load
+        document.addEventListener('DOMContentLoaded', fetchConfessions);
+
+        // async function fetchConfessions() {
+        //     try {
+        //         const response = await fetch(`${API_URL}/confessions`);
+        //         const confessions = await response.json();
+        //         renderConfessions(confessions);
+        //     } catch (error) {
+        //         console.error('Error fetching confessions:', error);
+        //     }
+        // }
+
+        // function renderConfessions(confessions) {
+        //     const container = document.getElementById('confessionsList');
+        //     container.innerHTML = confessions.map(confession => `
+        //         <div class="confession" data-id="${confession.id}">
+        //             <p>${confession.text}</p>
+        //             <div class="tags">
+        //                 ${confession.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        //             </div>
+        //             <button class="like-btn ${isLiked(confession.id) ? 'liked' : ''}" 
+        //                     onclick="toggleLike('${confession.id}')">
+        //                 ♥ ${confession.likes}
+        //             </button>
+        //             <div class="comments">
+        //                 ${confession.comments.map(comment => `
+        //                     <div class="comment">${comment}</div>
+        //                 `).join('')}
+        //             </div>
+        //             <form class="comment-form" onsubmit="postComment(event, '${confession.id}')">
+        //                 <input type="text" placeholder="Add a comment" required>
+        //                 <button type="submit">Post</button>
+        //             </form>
+        //         </div>
+        //     `).join('');
+        // }
+
+        async function postConfession() {
+            const text = document.getElementById('confessionText').value;
+            const tags = document.getElementById('confessionTags').value
+                .split(',')
+                .map(tag => tag.trim())
+                .filter(tag => tag);
+
+            if (!text) return;
+
+            try {
+                const response = await fetch(`${API_URL}/confessions`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text, tags })
+                });
+                
+                document.getElementById('confessionText').value = '';
+                document.getElementById('confessionTags').value = '';
+                fetchConfessions();
+            } catch (error) {
+                console.error('Error posting confession:', error);
+            }
+        }
+
+        async function toggleLike(confessionId) {
+            const action = isLiked(confessionId) ? 'unlike' : 'like';
+            
+            try {
+                const response = await fetch(`${API_URL}/like`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ confession_id: confessionId, action })
+                });
+                
+                const data = await response.json();
+                updateLocalStorage(confessionId, action);
+                fetchConfessions();
+            } catch (error) {
+                console.error('Error toggling like:', error);
+            }
+        }
+
+        function isLiked(confessionId) {
+            return localStorage.getItem(`liked_${confessionId}`) === 'true';
+        }
+
+        function updateLocalStorage(confessionId, action) {
+            if (action === 'like') {
+                localStorage.setItem(`liked_${confessionId}`, 'true');
+            } else {
+                localStorage.removeItem(`liked_${confessionId}`);
+            }
+        }
+
+        async function postComment(event, confessionId) {
+            event.preventDefault();
+            const input = event.target.querySelector('input');
+            const comment = input.value;
+
+            try {
+                await fetch(`${API_URL}/comment`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ confession_id: confessionId, comment })
+                });
+                
+                input.value = '';
+                fetchConfessions();
+            } catch (error) {
+                console.error('Error posting comment:', error);
+            }
+        }
+    </script>
+</body>
+</html>
