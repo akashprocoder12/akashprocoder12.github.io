@@ -110,59 +110,70 @@
       }
 
       function filterConfessions() {
-    const search = document.getElementById('searchInput').value.trim().toLowerCase();
+        const search = document
+          .getElementById("searchInput")
+          .value.trim()
+          .toLowerCase();
 
-    const filtered = allConfessions
-        .filter(confession =>
-            search === '' ||
-            confession.tags.some(tag => tag.toLowerCase().includes(search))
-        )
-        .sort((a, b) => b.comments.length - a.comments.length);
+        const filtered = allConfessions
+          .filter(
+            (confession) =>
+              search === "" ||
+              confession.tags.some((tag) => tag.toLowerCase().includes(search))
+          )
+          .sort((a, b) => b.comments.length - a.comments.length);
 
-    renderConfessions(filtered);
-}
-
+        renderConfessions(filtered);
+      }
 
       function renderConfessions(confessions) {
         const container = document.getElementById("confessionsList");
         container.innerHTML = confessions
           .map(
             (confession) => `
-                <div class="confession" data-id="${confession.id}">
-                    <p>${confession.text}</p>
-                    <div class="tags">
-                        ${confession.tags
-                          .map((tag) => `<span class="tag">${tag}</span>`)
-                          .join("")}
-                    </div>
-                    <button class="like-btn ${
-                      isLiked(confession.id) ? "liked" : ""
-                    }" 
-                            onclick="toggleLike('${confession.id}')">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="${
-                          isLiked(confession.id) ? "#EF4444" : "none"
-                        }" stroke="currentColor" stroke-width="2">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                        </svg>
-                        ${confession.likes}
-                    </button>
-                    <div class="comments">
-                        ${confession.comments
-                          .map(
-                            (comment) => `
-                            <div class="comment">${comment}</div>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                    <form class="comment-form" onsubmit="postComment(event, '${
-                      confession.id
-                    }')">
-                        <input type="text" placeholder="Add a comment" required style="flex:1; background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:0.5rem; border-radius:8px;">
-                        <button type="submit" style="background: var(--nebula); border:none; padding:0.5rem 1rem; border-radius:8px; color:white; cursor:pointer;">Post</button>
-                    </form>
-                </div>
-            `
+        <div class="confession" data-id="${confession.id}">
+            <p>${confession.text}</p>
+            <div class="tags">
+                ${confession.tags
+                  .map((tag) => `<span class="tag">${tag}</span>`)
+                  .join("")}
+            </div>
+            <button class="like-btn ${isLiked(confession.id) ? "liked" : ""}" 
+                    onclick="toggleLike('${confession.id}')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="${
+                  isLiked(confession.id) ? "#EF4444" : "none"
+                }" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                ${confession.likes}
+            </button>
+
+            <button class="toggle-comments-btn" onclick="toggleComments('${
+              confession.id
+            }')">
+                💬 Comments (${confession.comments.length})
+            </button>
+
+            <div class="comments" id="comments-${
+              confession.id
+            }" style="display: none;">
+                ${confession.comments
+                  .map(
+                    (comment) => `
+                    <div class="comment">${comment}</div>
+                `
+                  )
+                  .join("")}
+            </div>
+
+            <form class="comment-form" onsubmit="postComment(event, '${
+              confession.id
+            }')">
+                <input type="text" placeholder="Add a comment" required style="flex:1; background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:0.5rem; border-radius:8px;">
+                <button type="submit" style="background: var(--nebula); border:none; padding:0.5rem 1rem; border-radius:8px; color:white; cursor:pointer;">Post</button>
+            </form>
+        </div>
+    `
           )
           .join("");
       }
@@ -240,6 +251,15 @@
           fetchConfessions();
         } catch (error) {
           console.error("Error posting comment:", error);
+        }
+      }
+      function toggleComments(confessionId) {
+        const commentsSection = document.getElementById(
+          `comments-${confessionId}`
+        );
+        if (commentsSection) {
+          commentsSection.style.display =
+            commentsSection.style.display === "none" ? "block" : "none";
         }
       }
     </script>
