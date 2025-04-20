@@ -33,10 +33,10 @@
     </div>
 
     <script>
-        // Original JavaScript remains unchanged except modal functions
+        
         const API_URL = 'https://confession-render.onrender.com';
 
-        // Modal functions
+        
         function showModal() {
             document.getElementById('modal').style.display = 'flex';
         }
@@ -47,7 +47,7 @@
             document.getElementById('confessionTags').value = '';
         }
 
-        // Close modal when clicking outside
+        
         window.onclick = function(event) {
             const modal = document.getElementById('modal');
             if (event.target === modal) {
@@ -55,7 +55,7 @@
             }
         }
 
-        // Rest of original JavaScript functions remain unchanged
+        
         document.addEventListener('DOMContentLoaded', fetchConfessions);
 
         async function fetchConfessions() {
@@ -96,45 +96,12 @@
             `).join('');
         }
 
-        // const API_URL = 'http://localhost:8000'; // Update if your backend is hosted elsewhere
+        
 
-        // Load confessions on page load
+        
         document.addEventListener('DOMContentLoaded', fetchConfessions);
 
-        // async function fetchConfessions() {
-        //     try {
-        //         const response = await fetch(`${API_URL}/confessions`);
-        //         const confessions = await response.json();
-        //         renderConfessions(confessions);
-        //     } catch (error) {
-        //         console.error('Error fetching confessions:', error);
-        //     }
-        // }
-
-        // function renderConfessions(confessions) {
-        //     const container = document.getElementById('confessionsList');
-        //     container.innerHTML = confessions.map(confession => `
-        //         <div class="confession" data-id="${confession.id}">
-        //             <p>${confession.text}</p>
-        //             <div class="tags">
-        //                 ${confession.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-        //             </div>
-        //             <button class="like-btn ${isLiked(confession.id) ? 'liked' : ''}" 
-        //                     onclick="toggleLike('${confession.id}')">
-        //                 ♥ ${confession.likes}
-        //             </button>
-        //             <div class="comments">
-        //                 ${confession.comments.map(comment => `
-        //                     <div class="comment">${comment}</div>
-        //                 `).join('')}
-        //             </div>
-        //             <form class="comment-form" onsubmit="postComment(event, '${confession.id}')">
-        //                 <input type="text" placeholder="Add a comment" required>
-        //                 <button type="submit">Post</button>
-        //             </form>
-        //         </div>
-        //     `).join('');
-        // }
+        
 
         async function postConfession() {
             const text = document.getElementById('confessionText').value;
