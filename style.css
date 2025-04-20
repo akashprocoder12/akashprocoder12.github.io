@@ -89,7 +89,7 @@ h1 {
 } */
 
 .confession p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     margin: 0 0 1rem 0;
 }
@@ -139,17 +139,18 @@ h1 {
 
 /* Comments */
 .comments {
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
 }
 
 .comment {
-    background: rgba(15, 23, 42, 0.4);
-    padding: 0.75rem 1rem;
+    background: rgba(22, 34, 61, 0.4);
+    padding: 0.6rem 1rem;
     border-radius: 8px;
     margin: 0.5rem 0;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
+    border: 0.5px solid rgba(128, 128, 128, 0.549);
 }
 
 /* Modal Styles */
@@ -220,4 +221,21 @@ textarea {
     color: white;
     font-size: 1rem;
     outline: none;
+}
+
+.toggle-comments-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--stardust);
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem ;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.toggle-comments-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
