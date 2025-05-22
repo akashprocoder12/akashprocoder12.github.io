@@ -1,7 +1,7 @@
 const container = document.getElementById("menu-container");
 const cartCount = document.getElementById("cart-count");
 let foodItems = []; // This will be populated from the backend
-const API_BASE = "http://127.0.0.1:8000/api"
+const API_BASE = "https://college-canteen-5seg.onrender.com/api"
 async function loadMenu() {
   try {
     const res = await fetch(`${API_BASE}/foods`);
