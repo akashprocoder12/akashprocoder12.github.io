@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const order = { name, phone, room, items, total };
 
       try {
-        const response = await fetch("http://localhost:8000/api/place-order", {
+        const response = await fetch("https://college-canteen-5seg.onrender.com/api/place-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(order),
