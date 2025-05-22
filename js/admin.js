@@ -1,5 +1,5 @@
 // js/admin.js
-const API_BASE = "http://localhost:8000/api";
+const API_BASE = "https://college-canteen-5seg.onrender.com/api";
 const ordersContainer = document.getElementById("orders-container");
 
 async function loadOrders() {
