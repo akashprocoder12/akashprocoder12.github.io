@@ -1,140 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Confession Wall</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928DAB);
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      position: relative;
-    }
-
-    a{
-        font-style: none;
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .container {
-      text-align: center;
-      animation: fadeIn 2s ease-out;
-    }
-
-    h1 {
-      font-size: 3em;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: slideInTop 1.5s ease-out;
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-top: 10px;
-      animation: fadeIn 3s ease-out;
-    }
-
-    .btn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 1em;
-      background: #fff;
-      color: #1f1c2c;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease-in-out;
-      animation: popIn 2s ease-out;
-    }
-
-    .btn:hover {
-      background: #ff9a9e;
-      color: white;
-      box-shadow: 0 0 30px rgba(255, 154, 158, 0.7);
-    }
-
-    .tag-preview {
-      margin-top: 50px;
-      opacity: 0.8;
-      font-size: 0.9em;
-      animation: fadeIn 4s ease-out;
-    }
-
-    .tag-preview span {
-      background: rgba(255,255,255,0.1);
-      padding: 5px 12px;
-      margin: 5px;
-      border-radius: 20px;
-      display: inline-block;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes slideInTop {
-      0% { transform: translateY(-50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* Stars background */
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: url('images/i_love_u-removebg-preview.png');
-      background-size: 100px 100px;
-      background-repeat: repeat;
-      background-position: center;
-      animation: moveStars 60s linear infinite;
-      z-index: -1;
-      opacity:  0.4;
-    }
-
-    @keyframes moveStars {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Canteen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <!-- <div class="stars"></div> -->
-  <div class="container">
-    <h1>Confess Anything</h1>
-    <p>Share your thoughts anonymously and freely.</p>
-    <button class="btn"><a href="confession.html">Confess now</a></button>
-    <div class="tag-preview">
-      <p>Popular Tags:</p>
-      <span>#love</span>
-      <span>#crush</span>
-      <span>#guilt</span>
-      <span>#secret</span>
-      <span>#regret</span>
-    </div>
-  </div>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">🍽️ College Canteen</h1>
+    <a href="cart.html" class="relative">
+      <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.293 1.293a1 1 0 001.414 1.414L9 15h6l.879 1.707a1 1 0 001.414-1.414L17 13H7z"/>
+      </svg>
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 rounded-full">0</span>
+    </a>
+  </header>
+
+  <!-- Menu Section -->
+  <main class="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="menu-container">
+    <!-- Food cards will be inserted here via JS -->
+  </main>
+
+  
+  <script src="js/menu.js"></script>
+  
 </body>
 </html>
