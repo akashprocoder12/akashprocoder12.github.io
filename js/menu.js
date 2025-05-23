@@ -9,7 +9,7 @@ async function loadMenu() {
 
     foodItems.forEach((item) => {
       const card = document.createElement("div");
-      card.className = "bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition";
+      card.className = "bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition  items-center flex flex-col m-4 p-4";
 
       card.innerHTML = `
         <h1 class="text-xl " >${item.image}</h1>
