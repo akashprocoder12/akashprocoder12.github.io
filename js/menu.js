@@ -12,7 +12,7 @@ async function loadMenu() {
       card.className = "bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition  items-center flex flex-col m-4 p-4";
 
       card.innerHTML = `
-        <h1 class="text-xl " >${item.image}</h1>
+        <h1 class="text-8xl " >${item.image}</h1>
         <div class="p-4">
           <h3 class="text-xl font-semibold">${item.name}</h3>
           <p class="text-gray-600">₹${item.price}</p>
