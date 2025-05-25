@@ -31,7 +31,48 @@ async function loadMenu() {
 }
 
 function addToCart(id) {
-  alert("item added successfully !");
+  
+  // Create the popup element
+  const popup = document.createElement("div");
+  popup.textContent = "Item added successfully ✅";
+  
+  // Style the popup
+  Object.assign(popup.style, {
+    position: "fixed",
+    bottom: "30px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    backgroundColor: "#4CA000",
+    color: "#fff",
+    padding: "12px 20px",
+    borderRadius: "5px",
+    fontSize: "16px",
+    zIndex: "1000",
+    opacity: "0",
+    transition: "opacity 0.5s",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    textAlign: "center",    
+    width: "300px",
+    maxWidth: "90%",
+    border: "1px solid #555"
+  });
+
+  // Append to body
+  document.body.appendChild(popup);
+
+  // Trigger fade-in
+  setTimeout(() => {
+    popup.style.opacity = "1";
+  }, 10); // small delay to ensure the transition works
+
+  // Remove after 3 seconds
+  setTimeout(() => {
+    popup.style.opacity = "0";
+    setTimeout(() => document.body.removeChild(popup), 500);
+  }, 1000);
+
+
+  alert("Item added to cart!");
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const found = cart.find(item => item._id === id);
   if (found) {
@@ -45,6 +86,7 @@ function addToCart(id) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 }
+
 
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
