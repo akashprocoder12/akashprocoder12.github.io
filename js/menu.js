@@ -72,7 +72,7 @@ function addToCart(id) {
   }, 1000);
 
 
-  alert("Item added to cart!");
+  
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const found = cart.find(item => item._id === id);
   if (found) {
