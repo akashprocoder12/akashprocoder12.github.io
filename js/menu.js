@@ -31,6 +31,7 @@ async function loadMenu() {
 }
 
 function addToCart(id) {
+  alert("item added successfully !");
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const found = cart.find(item => item._id === id);
   if (found) {
